@@ -26,9 +26,14 @@ class CarFormTests(TestCase):
         self.assertTrue(form.is_valid())
 
     def test_invalid_car_creation(self):
-        form = CarForm({"model": "", "manufacturer": "", "drivers": []})
+        form = CarForm(
+            {
+                "model": "",
+                "manufacturer": "",
+                "drivers": [],
+            }
+        )
         self.assertFalse(form.is_valid())
-        print(form.errors)
         self.assertIn("model", form.errors)
         self.assertIn("manufacturer", form.errors)
         self.assertIn("drivers", form.errors)

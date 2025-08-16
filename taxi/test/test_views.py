@@ -36,7 +36,6 @@ class DriverListSearchTests(LoggedInTestCase):
             reverse("taxi:driver-list"),
             {"username": ""},
         )
-        print(response.content)
         self.assertEqual(response.status_code, 200)
         self.assertContains(response, self.user1.username)
         self.assertContains(response, self.user2.username)
@@ -46,7 +45,6 @@ class DriverListSearchTests(LoggedInTestCase):
             reverse("taxi:driver-list"),
             {"username": "john.doe"},
         )
-        print(response.content)
         self.assertEqual(response.status_code, 200)
         self.assertContains(response, self.user2.username)
 
@@ -55,7 +53,6 @@ class DriverListSearchTests(LoggedInTestCase):
             reverse("taxi:driver-list"),
             {"username": "nonexistent"},
         )
-        print(response.content)
         self.assertEqual(response.status_code, 200)
         self.assertContains(
             response,
@@ -84,7 +81,6 @@ class CarModelSearchTests(LoggedInTestCase):
             reverse("taxi:car-list"),
             {"model": "Model X"},
         )
-        print(response.content)
         self.assertEqual(response.status_code, 200)
         self.assertContains(response, str(self.car1))
         self.assertNotContains(response, str(self.car2))
@@ -94,7 +90,6 @@ class CarModelSearchTests(LoggedInTestCase):
             reverse("taxi:car-list"),
             {"model": ""},
         )
-        print(response.content)
         self.assertEqual(response.status_code, 200)
         self.assertContains(response, str(self.car1))
         self.assertContains(response, str(self.car2))
